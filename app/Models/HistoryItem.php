@@ -13,7 +13,7 @@ class HistoryItem extends Model
 
     public static function getLatestId()
     {
-        return static::latest()->first()->log_id ?? null;
+        return static::max('log_id');
     }
 
     public function metable()
