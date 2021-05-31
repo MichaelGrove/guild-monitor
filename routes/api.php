@@ -37,7 +37,9 @@ Route::post('/token', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::resource('member', MemberController::class);
+    Route::resource('members', MemberController::class)
+        ->only(['index', 'show']);
+
 
     Route::resource('history', HistoryItemController::class);
 });

@@ -2,21 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\MemberCollection;
-use App\Http\Resources\UserCollection;
+use App\Http\Requests\DatatableRequest;
+use App\Http\Resources\MemberResource;
+use App\Http\Resources\PaginatorCollection;
 use App\Models\Member;
-use Illuminate\Http\Request;
+use App\Traits\UsesDatatable;
 
 class MemberController extends Controller
 {
+    use UsesDatatable;
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(DatatableRequest $request)
     {
-        return new MemberCollection(Member::paginate(24));
+        return PaginatorCollection::collection(
+            MemberResource::class, 
+            $this->search(Member::class, $request, ['name', 'rank', 'joined'])
+        );
     }
 
     /**
