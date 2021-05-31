@@ -15,6 +15,7 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \App\Http\Requests\DatatableRequest
      * @return \Illuminate\Http\Response
      */
     public function index(DatatableRequest $request)

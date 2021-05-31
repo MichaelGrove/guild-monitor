@@ -6,7 +6,7 @@ use App\Http\Requests\DatatableRequest;
 trait UsesDatatable
 {
     /**
-     * Undocumented function
+     * A simple search for datatables.
      *
      * @param string $model
      * @param DatatableRequest $request
