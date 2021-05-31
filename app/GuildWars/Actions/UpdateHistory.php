@@ -39,14 +39,6 @@ class UpdateHistory
             if ($metaData) {
                 $metaData->history_item()->create($historyData);
             }
-
-            /** @var HistoryItem $item */
-            // $history_item = HistoryItem::create($historyData);
-
-            // if ($metaData) {
-            //     $history_item->metable()->create($metaData);
-            //     // $history_item->history_meta()->create($metaData);
-            // }
         }
     }
 
