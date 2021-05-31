@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('guildwars:fetch-members')->daily();
         $schedule->command('guildwars:fetch-history')->everyThreeHours();
+        $schedule->command('guildwars:fetch-items')->everyThreeHours();
     }
 
     /**
