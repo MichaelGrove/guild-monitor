@@ -5,23 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StashLog extends Model
+class Item extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $guarded = [];
 
-    public function history_item() {
-        return $this->morphOne(HistoryItem::class, 'metable');
-    }
-
-    public static function getMissingItemIds($found_ids)
+    public static function getUniqueItemIds()
     {
         return static::select('item_id')
             ->where('item_id', '>', 0)
-            ->whereNotIn('item_id', $found_ids)
             ->distinct()
             ->get()
             ->pluck('item_id');
