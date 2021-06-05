@@ -20,4 +20,9 @@ class HistoryItem extends Model
     {
         return $this->morphTo();
     }
+
+    public function note()
+    {
+        $this->hasMany(HistoryItemNote::class);
+    }
 }

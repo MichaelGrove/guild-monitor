@@ -2,18 +2,19 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class PaginatorCollection extends ResourceCollection
 {
 
-    private string $resource;
+    private string $resource_class;
 
-    public function __construct(string $resource, LengthAwarePaginator $collection)
+    public function __construct(string $resource_class, LengthAwarePaginator $collection)
     {
         parent::__construct($collection);
-        $this->resource = $resource;
+        $this->resource_class = $resource_class;
     }
 
     /**
@@ -25,7 +26,7 @@ class PaginatorCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data' => $this->resource::collection($this->collection),
+            'data' => $this->resource_class::collection($this->collection),
             'current_page' => $this->currentPage(),
             'last_page' => $this->lastPage(),
             'per_page' => $this->perPage(),

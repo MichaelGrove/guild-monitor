@@ -25,7 +25,7 @@ class DatatableRequest extends FormRequest
     {
         return [
             'search' => 'required|string|max:250',
-            'page' => 'required|number',
+            'page' => 'required|integer',
         ];
     }
 }

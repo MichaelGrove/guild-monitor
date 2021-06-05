@@ -20,10 +20,10 @@ class MemberController extends Controller
      */
     public function index(DatatableRequest $request)
     {
-        return PaginatorCollection::collection(
-            MemberResource::class, 
-            $this->search(Member::class, $request, ['name', 'rank', 'joined'])
-        );
+        $query = $this->search(Member::query(), $request, ['name', 'rank']);
+        $data = $this->paginate($query, $request);
+        $results = new PaginatorCollection(MemberResource::class, $data);
+        return response()->json($results);
     }
 
     /**

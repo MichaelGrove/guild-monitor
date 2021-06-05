@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HistoryItemController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\StashController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -40,6 +41,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('members', MemberController::class)
         ->only(['index', 'show']);
 
-
-    Route::resource('history', HistoryItemController::class);
+    Route::resource('stash', StashController::class)
+        ->only(['index', 'show']);
 });

@@ -17,6 +17,11 @@ class StashLog extends Model
         return $this->morphOne(HistoryItem::class, 'metable');
     }
 
+    public function item()
+    {
+        return $this->belongsTo(Item::class, 'item_id', 'item_id');
+    }
+
     public static function getMissingItemIds($found_ids)
     {
         return static::select('item_id')
