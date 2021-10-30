@@ -55,7 +55,7 @@ class UpdateHistory
             case 'upgrade':
                 return UpgradeLog::create([
                     'action' => $item['action'],
-                    'upgrade_id' => $item['upgrade_id'],
+                    'upgrade_id' => $item['upgrade_id'] ?? 0,
                     'recipe_id' => $item['recipe_id'] ?? null,
                 ]);
             case 'rank_change':
